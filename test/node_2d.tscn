@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwhy4geng0pbn"]
+
+[ext_resource type="Script" path="res://Game.cs" id="1_3fc12"]
+[ext_resource type="Texture2D" uid="uid://c0r0mo4wesr8r" path="res://bg.png" id="1_eqlk6"]
+[ext_resource type="PackedScene" uid="uid://b3dqoywtxi8lp" path="res://snake_body.tscn" id="2_n1shj"]
+[ext_resource type="Texture2D" uid="uid://d18yq7k7yoeib" path="res://Berry.png" id="3_pqsij"]
+[ext_resource type="Script" path="res://Berry.cs" id="5_w57qp"]
+[ext_resource type="PackedScene" uid="uid://bgwxitm1wwcbi" path="res://hud.tscn" id="5_x2oau"]
+[ext_resource type="PackedScene" uid="uid://b8acrmfje47ag" path="res://game_over_menu.tscn" id="6_y7gd7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3fc12")
+snakeScene = ExtResource("2_n1shj")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(500, 550)
+texture = ExtResource("1_eqlk6")
+
+[node name="Berry" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("3_pqsij")
+offset = Vector2(25, 25)
+script = ExtResource("5_w57qp")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="HUD" parent="." instance=ExtResource("5_x2oau")]
+
+[node name="GameOverMenu" parent="." instance=ExtResource("6_y7gd7")]
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="RestartGame" from="GameOverMenu" to="." method="_on_game_over_menu_restart_game"]

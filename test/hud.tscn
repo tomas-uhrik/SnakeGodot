@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgwxitm1wwcbi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bell"]
+bg_color = Color(0.858824, 0.486275, 0.356863, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScorePanel" type="Panel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7bell")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_right = 64.5
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "SCORE: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
